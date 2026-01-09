@@ -6,16 +6,8 @@ class Settings(BaseSettings):
     mongodb_url: str = "mongodb://localhost:27017"
     mongodb_database: str = "optimsp"
     
-    GEMINI_API_KEY: str = ""
-    GEMINI_MODEL: str = "gemini-1.5-flash"
-    
-    AZURE_API_KEY: str = ""
-    azure_model: str = "gpt-4"
-    
-    azure_openai_endpoint: str = ""
-    azure_openai_api_key: str = ""
-    azure_openai_deployment_name: str = "gpt-4"
-    azure_openai_api_version: str = "2024-02-15-preview"
+    AZURE_OPENAI_API_KEY: str = ""
+    AZURE_OPENAI_MODEL: str = "gpt-4"
     
     secret_key: str = "your-secret-key-change-in-production"
     algorithm: str = "HS256"

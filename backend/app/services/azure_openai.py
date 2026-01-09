@@ -1,4 +1,4 @@
-"""Gemini AI service for AI chat."""
+"""Azure OpenAI service for AI chat."""
 from app.config import get_settings
 import google.generativeai as genai
 import logging
@@ -6,12 +6,12 @@ import logging
 settings = get_settings()
 logger = logging.getLogger(__name__)
 
-# Configure Gemini
-if settings.GEMINI_API_KEY:
-    genai.configure(api_key=settings.GEMINI_API_KEY)
-    logger.info("Gemini API configured successfully")
+# Configure Azure OpenAI
+if settings.AZURE_OPENAI_API_KEY:
+    genai.configure(api_key=settings.AZURE_OPENAI_API_KEY)
+    logger.info("Azure OpenAI API configured successfully")
 else:
-    logger.warning("GEMINI_API_KEY not found in environment")
+    logger.warning("AZURE_OPENAI_API_KEY not found in environment")
 
 # MSP Business context for AI
 MSP_SYSTEM_PROMPT = """You are an AI assistant for OptiMSP, an MSP (Managed Service Provider) business intelligence platform.
@@ -44,17 +44,17 @@ You should be helpful and answer all questions related to MSP business, technolo
 Be professional, helpful, and provide detailed, actionable responses."""
 
 
-def get_gemini_client():
-    """Get Gemini AI client with proper model detection."""
-    if not settings.GEMINI_API_KEY:
-        logger.error("GEMINI_API_KEY not configured")
+def get_azure_openai_client():
+    """Get Azure OpenAI client with proper model detection."""
+    if not settings.AZURE_OPENAI_API_KEY:
+        logger.error("AZURE_OPENAI_API_KEY not configured")
         return None
     
     try:
         # List available models first
         models = list(genai.list_models())
         available_models = [m.name for m in models if 'generateContent' in m.supported_generation_methods]
-        logger.info(f"Available Gemini models: {available_models}")
+        logger.info(f"Available Azure OpenAI models: {available_models}")
         
         # Try to find a working model
         preferred_models = [
@@ -78,7 +78,7 @@ def get_gemini_client():
             return model
             
     except Exception as e:
-        logger.error(f"Failed to initialize Gemini: {e}")
+        logger.error(f"Failed to initialize Azure OpenAI: {e}")
     
     return None
 
@@ -88,12 +88,12 @@ async def generate_chat_response(
     conversation_history: list = None,
     context: dict = None
 ) -> str:
-    """Generate AI response using Gemini API."""
+    """Generate AI response using Azure OpenAI API."""
     
     try:
-        model = get_gemini_client()
+        model = get_azure_openai_client()
         if not model:
-            logger.warning("Gemini client not available, using fallback")
+            logger.warning("Azure OpenAI client not available, using fallback")
             return get_fallback_response(message)
         
         # Build simple prompt
@@ -103,19 +103,19 @@ async def generate_chat_response(
         response = model.generate_content(prompt)
         
         if response and response.text:
-            logger.info("Gemini response generated successfully")
+            logger.info("Azure OpenAI response generated successfully")
             return response.text.strip()
         else:
-            logger.warning("Empty response from Gemini")
+            logger.warning("Empty response from Azure OpenAI")
             return get_fallback_response(message)
             
     except Exception as e:
-        logger.error(f"Gemini API error: {str(e)}")
+        logger.error(f"Azure OpenAI API error: {str(e)}")
         return get_fallback_response(message)
 
 
 def get_fallback_response(message: str) -> str:
-    """Fallback responses when Gemini API is unavailable."""
+    """Fallback responses when Azure OpenAI API is unavailable."""
     
     message_lower = message.lower()
     

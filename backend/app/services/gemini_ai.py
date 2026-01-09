@@ -5,7 +5,7 @@ from app.config import get_settings
 settings = get_settings()
 
 # Configure Azure AI
-genai.configure(api_key=settings.azure_api_key)
+genai.configure(api_key=settings.AZURE_OPENAI_API_KEY)
 
 # MSP Business context for AI
 MSP_SYSTEM_PROMPT = """You are an AI assistant for OptiMSP, an MSP (Managed Service Provider) business intelligence platform.
@@ -32,7 +32,7 @@ async def generate_chat_response(
     conversation_history: list = None,
     context: dict = None
 ) -> str:
-    """Generate a response from Google Gemini."""
+    """Generate a response from Azure OpenAI."""
     
     try:
         model = genai.GenerativeModel('gemini-pro')
@@ -57,7 +57,7 @@ async def generate_chat_response(
         return response.text
         
     except Exception as e:
-        print(f"Azure AI error: {e}")
+        print(f"Azure OpenAI error: {e}")
         return "I'm having trouble connecting to the AI service. Please try again later."
 
 
