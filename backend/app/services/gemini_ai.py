@@ -5,7 +5,8 @@ from app.config import get_settings
 settings = get_settings()
 
 # Configure Azure AI
-genai.configure(api_key=settings.AZURE_OPENAI_API_KEY)
+api_key = settings.AZURE_OPENAI_API_KEY or settings.AZURE_API_KEY
+genai.configure(api_key=api_key)
 
 # MSP Business context for AI
 MSP_SYSTEM_PROMPT = """You are an AI assistant for OptiMSP, an MSP (Managed Service Provider) business intelligence platform.

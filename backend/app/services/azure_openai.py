@@ -7,8 +7,9 @@ settings = get_settings()
 logger = logging.getLogger(__name__)
 
 # Configure Azure OpenAI
-if settings.AZURE_OPENAI_API_KEY:
-    genai.configure(api_key=settings.AZURE_OPENAI_API_KEY)
+api_key = settings.AZURE_OPENAI_API_KEY or settings.AZURE_API_KEY
+if api_key:
+    genai.configure(api_key=api_key)
     logger.info("Azure OpenAI API configured successfully")
 else:
     logger.warning("AZURE_OPENAI_API_KEY not found in environment")
@@ -46,7 +47,8 @@ Be professional, helpful, and provide detailed, actionable responses."""
 
 def get_azure_openai_client():
     """Get Azure OpenAI client with proper model detection."""
-    if not settings.AZURE_OPENAI_API_KEY:
+    api_key = settings.AZURE_OPENAI_API_KEY or settings.AZURE_API_KEY
+    if not api_key:
         logger.error("AZURE_OPENAI_API_KEY not configured")
         return None
     

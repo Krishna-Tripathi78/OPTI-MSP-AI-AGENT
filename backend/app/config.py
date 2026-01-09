@@ -9,6 +9,9 @@ class Settings(BaseSettings):
     AZURE_OPENAI_API_KEY: str = ""
     AZURE_OPENAI_MODEL: str = "gpt-4"
     
+    AZURE_API_KEY: str = ""
+    azure_model: str = "gpt-4"
+    
     secret_key: str = "your-secret-key-change-in-production"
     algorithm: str = "HS256"
     access_token_expire_minutes: int = 30
