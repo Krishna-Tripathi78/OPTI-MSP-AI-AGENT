@@ -138,7 +138,7 @@ OptiMSP Intelligence Hub is a comprehensive business intelligence platform desig
 **Backend (.env)**
 ```env
 MONGODB_URL=your-mongodb-connection-string
-GEMINI_API_KEY=your-gemini-api-key
+AZURE_API_KEY=your-azure-api-key
 FIREBASE_SERVICE_ACCOUNT_KEY=your-firebase-credentials
 TWILIO_ACCOUNT_SID=your-twilio-sid
 TWILIO_AUTH_TOKEN=your-twilio-token
