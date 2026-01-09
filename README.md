@@ -39,7 +39,9 @@ OptiMSP Intelligence Hub is a comprehensive business intelligence platform desig
 ### Backend
 - **FastAPI** for high-performance Python API
 - **MongoDB Atlas** for scalable data storage
-- **Google Gemini AI** for intelligent business insights
+- **Azure OpenAI Service (GPT-4)** for intelligent business insights
+- **Azure Machine Learning** for predictive analytics and anomaly detection
+- **Azure AI Anomaly Detector** for advanced cost spike monitoring
 - **Firebase Auth** for secure user authentication
 - **Twilio SMS** for OTP verification
 
@@ -57,7 +59,7 @@ OptiMSP Intelligence Hub is a comprehensive business intelligence platform desig
 - Or sign in with Google
 - SMS OTP verification available
 
-### Sample Queries for AI Assistant
+### Sample Queries for AI Assistant (Powered by Azure OpenAI)
 - "Which clients are most profitable this quarter?"
 - "Show me cost optimization opportunities"
 - "What are the current high-priority anomalies?"
@@ -113,11 +115,11 @@ OptiMSP Intelligence Hub is a comprehensive business intelligence platform desig
 - Team performance analytics
 - Profit margin analysis by client
 
-### AI-Powered Insights
-- Natural language business queries
-- Automated anomaly detection
-- Cost optimization recommendations
-- Predictive analytics for growth
+### AI-Powered Insights (Azure AI Suite)
+- Natural language business queries via Azure OpenAI
+- Automated anomaly detection with Azure AI Anomaly Detector
+- Cost optimization recommendations using Azure Machine Learning
+- Predictive analytics for growth forecasting
 
 ### Client Management
 - Comprehensive client profiles
@@ -138,7 +140,10 @@ OptiMSP Intelligence Hub is a comprehensive business intelligence platform desig
 **Backend (.env)**
 ```env
 MONGODB_URL=your-mongodb-connection-string
-AZURE_API_KEY=your-azure-api-key
+AZURE_OPENAI_API_KEY=your-azure-openai-key
+AZURE_OPENAI_ENDPOINT=your-azure-openai-endpoint
+AZURE_ML_ENDPOINT=your-azure-ml-endpoint
+AZURE_ANOMALY_DETECTOR_KEY=your-anomaly-detector-key
 FIREBASE_SERVICE_ACCOUNT_KEY=your-firebase-credentials
 TWILIO_ACCOUNT_SID=your-twilio-sid
 TWILIO_AUTH_TOKEN=your-twilio-token
@@ -157,7 +162,7 @@ VITE_FIREBASE_PROJECT_ID=your-project-id
 - **100% TypeScript** implementation for type safety
 - **Mobile-first responsive** design with 5 breakpoints
 - **Real-time data updates** with WebSocket simulation
-- **AI integration** with Google Gemini for business insights
+- **AI integration** with Microsoft Azure AI services for business insights
 - **Production-ready** with comprehensive error handling
 - **Scalable architecture** with microservices approach
 
