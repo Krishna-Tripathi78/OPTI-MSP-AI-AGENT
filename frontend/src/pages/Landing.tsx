@@ -38,7 +38,7 @@ export default function Landing() {
     if (user) {
       // Get proper user name from Firebase user object
       const userName = user.displayName || user.email?.split('@')[0] || 'User';
-      
+
       // Generate initials from name
       const getInitials = (name: string) => {
         const words = name.split(' ');
@@ -47,7 +47,7 @@ export default function Landing() {
         }
         return name.substring(0, 2).toUpperCase();
       };
-      
+
       // Store user in userService for ProtectedRoute compatibility
       const userData = {
         email: user.email || user.uid,
@@ -55,15 +55,15 @@ export default function Landing() {
         initials: getInitials(userName),
         role: 'user'
       };
-      
+
       console.log('Storing user data:', userData);
-      
+
       // Store in localStorage for ProtectedRoute
       localStorage.setItem('optimsp_session', JSON.stringify(userData));
-      
+
       setCurrentUser({ email: user.email || user.uid, role: 'user' });
       setIsLoggedIn(true);
-      
+
       // Immediate redirect
       navigate('/dashboard');
     }
@@ -86,7 +86,7 @@ export default function Landing() {
             <img src="/logo.png" alt="OptiMSP AI" className="w-8 h-8" />
             <span className="text-xl font-semibold">OptiMSP AI</span>
           </div>
-          
+
           <div className="flex items-center gap-3">
             <ThemeCustomizer />
             {isLoggedIn ? (
@@ -94,14 +94,14 @@ export default function Landing() {
                 <span className="text-sm text-muted-foreground">
                   Welcome, {currentUser?.email}
                 </span>
-                <Button 
-                  variant="ghost" 
+                <Button
+                  variant="ghost"
                   onClick={handleLogout}
                   className="text-muted-foreground hover:text-foreground px-4 py-2"
                 >
                   Logout
                 </Button>
-                <Button 
+                <Button
                   className="bg-primary text-primary-foreground px-4 py-2 rounded hover:bg-primary/90"
                   onClick={() => navigate('/dashboard')}
                 >
@@ -110,13 +110,13 @@ export default function Landing() {
               </div>
             ) : (
               <>
-                <button 
+                <button
                   className="text-muted-foreground hover:text-foreground px-4 py-2"
                   onClick={() => setShowLoginModal(true)}
                 >
                   Login
                 </button>
-                <button 
+                <button
                   className="bg-primary text-primary-foreground px-4 py-2 rounded hover:bg-primary/90"
                   onClick={() => setShowLoginModal(true)}
                 >
@@ -134,31 +134,31 @@ export default function Landing() {
           <div className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-sm mb-6">
             💡 AI-Powered MSP Financial Advisor
           </div>
-          
+
           <h1 className="text-5xl font-bold mb-6 leading-tight">
-            Stop Flying Blind on 
+            Stop Flying Blind on
             <span className="text-primary">Profitability</span>
           </h1>
-          
+
           <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-            Most MSPs lose money without knowing it. Hidden costs, unused licenses, 
-            and client churn eat into profits. We help you see what's really happening 
+            Most MSPs lose money without knowing it. Hidden costs, unused licenses,
+            and client churn eat into profits. We help you see what's really happening
             in your business.
           </p>
 
           <div className="flex gap-4 mb-12">
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3"
-              onClick={() => navigate('/dashboard')}
+              onClick={() => isLoggedIn ? navigate('/dashboard') : setShowLoginModal(true)}
             >
               Start Free Trial →
             </Button>
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               size="lg"
               className="border-gray-300 px-8 py-3"
-              onClick={() => navigate('/dashboard')}
+              onClick={() => window.open('https://1drv.ms/v/c/faf86bc519089114/IQCaE2c4gTWdSbME-c-hzAgGAdKThYWhzsumIPyaEl-OtNY?e=nxC9sU', '_blank')}
             >
               <Play className="mr-2 h-4 w-4" />
               See Demo
@@ -179,31 +179,31 @@ export default function Landing() {
               Sound Familiar?
             </h2>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-card p-6 rounded-lg border">
               <AlertCircle className="h-8 w-8 text-destructive mb-4" />
               <h3 className="font-semibold mb-2">"We're busy but not profitable"</h3>
               <p className="text-muted-foreground text-sm">
-                Revenue is up but margins are shrinking. You're working harder 
+                Revenue is up but margins are shrinking. You're working harder
                 but making less per client.
               </p>
             </div>
-            
+
             <div className="bg-card p-6 rounded-lg border">
               <DollarSign className="h-8 w-8 text-amber-600 dark:text-amber-400 mb-4" />
               <h3 className="font-semibold mb-2">"Software costs are out of control"</h3>
               <p className="text-muted-foreground text-sm">
-                Paying for licenses nobody uses. Multiple tools doing the same thing. 
+                Paying for licenses nobody uses. Multiple tools doing the same thing.
                 Bills keep growing.
               </p>
             </div>
-            
+
             <div className="bg-card p-6 rounded-lg border">
               <Users className="h-8 w-8 text-primary mb-4" />
               <h3 className="font-semibold mb-2">"Clients leave without warning"</h3>
               <p className="text-muted-foreground text-sm">
-                Everything seemed fine, then they cancel. No early warning signs, 
+                Everything seemed fine, then they cancel. No early warning signs,
                 no chance to fix issues.
               </p>
             </div>
@@ -219,11 +219,11 @@ export default function Landing() {
               Here's What We Do
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Simple tools that show you exactly where money is being wasted 
+              Simple tools that show you exactly where money is being wasted
               and which clients might leave.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <div className="space-y-6">
@@ -232,47 +232,47 @@ export default function Landing() {
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">Real-time Analytics</h3>
                     <p className="text-muted-foreground text-sm">
-                      See your actual profit margins by client, service, and month. 
+                      See your actual profit margins by client, service, and month.
                       No more guessing.
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="flex gap-4">
                   <CheckCircle2 className="h-6 w-6 text-green-500 mt-1 flex-shrink-0" />
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">AI Anomaly Detection</h3>
                     <p className="text-muted-foreground text-sm">
-                      Automatically spots unusual patterns that signal problems 
+                      Automatically spots unusual patterns that signal problems
                       before they cost you money.
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="flex gap-4">
                   <CheckCircle2 className="h-6 w-6 text-green-500 mt-1 flex-shrink-0" />
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">License Optimization</h3>
                     <p className="text-muted-foreground text-sm">
-                      Find unused software licenses and duplicate tools. 
+                      Find unused software licenses and duplicate tools.
                       Most clients save $2,000+ per month.
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="flex gap-4">
                   <CheckCircle2 className="h-6 w-6 text-green-500 mt-1 flex-shrink-0" />
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">Conversational Insights</h3>
                     <p className="text-muted-foreground text-sm">
-                      Ask questions like "Which clients are unprofitable?" 
+                      Ask questions like "Which clients are unprofitable?"
                       and get instant answers.
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-            
+
             <div className="bg-muted p-8 rounded-lg">
               <div className="bg-card p-4 rounded border mb-4">
                 <div className="flex items-center gap-2 mb-2">
@@ -308,7 +308,7 @@ export default function Landing() {
           <h2 className="text-2xl font-bold text-foreground mb-8">
             Real Results from Real MSPs
           </h2>
-          
+
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="text-3xl font-bold text-primary mb-2">$47K</div>
@@ -337,10 +337,10 @@ export default function Landing() {
             Ready to See What You're Missing?
           </h2>
           <p className="text-muted-foreground mb-8">
-            Start your free trial. No setup fees, no long-term contracts. 
+            Start your free trial. No setup fees, no long-term contracts.
             Cancel anytime.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
             <input
               type="email"
@@ -349,14 +349,14 @@ export default function Landing() {
               onChange={(e) => setEmail(e.target.value)}
               className="flex-1 px-4 py-3 border border-input rounded bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
             />
-            <Button 
+            <Button
               className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3"
               onClick={() => isLoggedIn ? navigate('/dashboard') : setShowLoginModal(true)}
             >
               {isLoggedIn ? 'Go to Dashboard' : 'Start Free Trial'}
             </Button>
           </div>
-          
+
           <p className="text-xs text-muted-foreground mt-4">
             14-day free trial • No credit card required
           </p>
@@ -370,16 +370,16 @@ export default function Landing() {
             <img src="/logo.png" alt="OptiMSP AI" className="w-6 h-6" />
             <span className="font-medium text-foreground">OptiMSP AI</span>
           </div>
-          
+
           <div className="text-sm text-muted-foreground">
-            Built by Team OpsMind 
-            
+            Built by Team OpsMind
+
           </div>
         </div>
       </footer>
-      
+
       {/* Login Modal */}
-      <FirebaseLoginModal 
+      <FirebaseLoginModal
         isOpen={showLoginModal}
         onClose={() => setShowLoginModal(false)}
         onLogin={handleLogin}

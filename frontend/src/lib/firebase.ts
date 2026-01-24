@@ -20,12 +20,29 @@ const requiredEnvVars = [
 
 const missingVars = requiredEnvVars.filter(varName => !import.meta.env[varName]);
 
+let app;
+let auth;
+
 if (missingVars.length > 0) {
-  console.error('Missing Firebase environment variables:', missingVars);
-  throw new Error(`Missing Firebase configuration: ${missingVars.join(', ')}`);
+  console.warn('Missing Firebase environment variables:', missingVars);
+  console.warn('Firebase features will be disabled. Create a .env file with the required variables to enable Firebase.');
+
+  // Create a minimal mock auth object to prevent immediate crashes on import
+  // The actual Firebase methods will still fail if called, which is expected behavior without config
+  auth = {
+    currentUser: null,
+    onAuthStateChanged: (cb: any) => () => { },
+    // Add other critical properties if they are accessed at module level
+  } as any;
+} else {
+  try {
+    app = initializeApp(firebaseConfig);
+    auth = getAuth(app);
+  } catch (error) {
+    console.error('Failed to initialize Firebase:', error);
+    auth = { currentUser: null } as any;
+  }
 }
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
+export { auth };
 export default app;
