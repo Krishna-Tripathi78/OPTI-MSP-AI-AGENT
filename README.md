@@ -36,35 +36,35 @@ OptiMSP Intelligence Hub is a comprehensive business intelligence platform desig
 - **Recharts** for interactive data visualization
 - **React Router** for client-side navigation
 
-### Backend - Powered by Microsoft Azure AI
+### Backend - AI-Powered Intelligence Stack
 - **FastAPI** for high-performance Python API
-- **MongoDB Atlas** for scalable data storage
-- **Azure OpenAI Service (GPT-4)** - Core business intelligence engine
-  - Natural language MSP queries with 94% accuracy
-  - Real-time insights processing 1000+ concurrent requests
-  - Enterprise-grade security and compliance
-- **Azure Machine Learning** - Predictive analytics powerhouse
-  - Client health scoring with 95% prediction accuracy
-  - Revenue forecasting models trained on $50M+ MSP data
-  - Auto-scaling ML endpoints for enterprise workloads
-- **Azure AI Anomaly Detector** - Real-time cost intelligence
-  - Monitors $2.3M+ in MSP revenue streams
-  - Detects cost anomalies within 30 seconds
-  - Prevents average $26K+ annual losses per client
-- **Firebase Auth** for secure user authentication
-- **Twilio SMS** for OTP verification
+- **MongoDB Atlas** for scalable cloud data storage
+- **Google Gemini AI** - Core business intelligence engine
+  - Natural language MSP queries with conversational AI
+  - Real-time insights and business analysis
+  - Context-aware responses for MSP operations
+- **Scikit-learn ML Models** - Predictive analytics engine
+  - Client churn prediction with Random Forest classifier
+  - Revenue forecasting with trend analysis
+  - Anomaly detection using Isolation Forest algorithm
+  - Real-time cost pattern analysis
+- **Firebase Authentication** - Secure user management
+  - Email/password authentication
+  - Google OAuth integration
+  - Session management with JWT tokens
+- **Twilio SMS** - Multi-factor authentication via OTP
 
-### Microsoft Azure AI - Our Competitive Moat
+### AI & Machine Learning - Our Competitive Edge
 ```
 🎯 COMPETITIVE ADVANTAGE MATRIX:
 
 ┌─────────────────────┬──────────────┬─────────────────┐
 │ Capability          │ OptiMSP      │ Competitors     │
 ├─────────────────────┼──────────────┼─────────────────┤
-│ Natural Language AI │ ✅ Azure GPT-4│ ❌ None         │
-│ Predictive ML       │ ✅ Azure ML   │ ❌ Basic stats  │
-│ Real-time Anomalies │ ✅ Azure AI   │ ❌ Manual alerts│
-│ Enterprise Scale    │ ✅ Azure Infra│ ❌ Limited      │
+│ Natural Language AI │ ✅ Gemini AI │ ❌ None         │
+│ Predictive ML       │ ✅ Scikit-learn│ ❌ Basic stats │
+│ Real-time Anomalies │ ✅ ML Models │ ❌ Manual alerts│
+│ Client Churn Risk   │ ✅ RF Classifier│ ❌ Limited    │
 └─────────────────────┴──────────────┴─────────────────┘
 
 RESULT: 10x faster insights, 23% profit improvement
@@ -84,11 +84,13 @@ RESULT: 10x faster insights, 23% profit improvement
 - Or sign in with Google
 - SMS OTP verification available
 
-### Sample Queries for AI Assistant (Powered by Azure OpenAI)
+### Sample Queries for AI Assistant (Powered by Google Gemini)
 - "Which clients are most profitable this quarter?"
 - "Show me cost optimization opportunities"
 - "What are the current high-priority anomalies?"
 - "How is our team performing this month?"
+- "Predict which clients are at risk of churning"
+- "Forecast revenue for the next 6 months"
 
 ## 🛠️ Local Development
 
@@ -140,11 +142,12 @@ RESULT: 10x faster insights, 23% profit improvement
 - Team performance analytics
 - Profit margin analysis by client
 
-### AI-Powered Insights (Azure AI Suite)
-- Natural language business queries via Azure OpenAI
-- Automated anomaly detection with Azure AI Anomaly Detector
-- Cost optimization recommendations using Azure Machine Learning
-- Predictive analytics for growth forecasting
+### AI-Powered Insights
+- Natural language business queries via Google Gemini AI
+- Automated anomaly detection with Isolation Forest ML models
+- Cost optimization recommendations using predictive analytics
+- Client churn prediction with Random Forest classifier
+- Revenue forecasting with trend analysis algorithms
 
 ### Client Management
 - Comprehensive client profiles
@@ -165,15 +168,20 @@ RESULT: 10x faster insights, 23% profit improvement
 **Backend (.env)**
 ```env
 MONGODB_URL=your-mongodb-connection-string
-AZURE_OPENAI_API_KEY=your-azure-openai-key
-AZURE_OPENAI_ENDPOINT=your-azure-openai-endpoint
-AZURE_ML_ENDPOINT=your-azure-ml-endpoint
-AZURE_ANOMALY_DETECTOR_KEY=your-anomaly-detector-key
-FIREBASE_SERVICE_ACCOUNT_KEY=your-firebase-credentials
-TWILIO_ACCOUNT_SID=your-twilio-sid
-TWILIO_AUTH_TOKEN=your-twilio-token
-SECRET_KEY=your-jwt-secret
+MONGODB_DATABASE=optimsp
+AZURE_OPENAI_API_KEY=your-google-gemini-api-key
+AZURE_OPENAI_MODEL=gemini-pro
+SECRET_KEY=your-jwt-secret-key
+ALGORITHM=HS256
+ACCESS_TOKEN_EXPIRE_MINUTES=30
+FIREBASE_SERVICE_ACCOUNT_KEY=your-firebase-service-account-json
+SENDER_EMAIL=your-email@gmail.com
+SENDER_PASSWORD=your-gmail-app-password
+ENVIRONMENT=production
+PORT=8000
 ```
+
+**Note**: Despite the variable name `AZURE_OPENAI_API_KEY`, this should contain your Google Gemini API key. The naming is maintained for backward compatibility.
 
 **Frontend (Vercel)**
 ```env
@@ -187,7 +195,7 @@ VITE_FIREBASE_PROJECT_ID=your-project-id
 - **100% TypeScript** implementation for type safety
 - **Mobile-first responsive** design with 5 breakpoints
 - **Real-time data updates** with WebSocket simulation
-- **AI integration** with Microsoft Azure AI services for business insights
+- **AI integration** with Google Gemini and scikit-learn ML models for business insights
 - **Production-ready** with comprehensive error handling
 - **Scalable architecture** with microservices approach
 
